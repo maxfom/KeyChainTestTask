@@ -17,8 +17,6 @@ class LoginViewController: UIViewController {
     let passwordLabel = UILabel(text: "Password:", font: .AvenirNext14(), aligment: .left)
     lazy var passwordField = UITextField(placeholder: "Enter your password", keyboardType: .default, font: .AvenirNextDemiBold14())
     
-    @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
-
     
     let loginButton: UIButton = {
         let button = UIButton()
@@ -44,11 +42,17 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
         title = "Log in"
         setConstraints()
+        checkService()
         passwordField.isSecureTextEntry = true
         
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         showUsersButton.addTarget(self, action: #selector(showButtonTapped), for: .touchUpInside)
     }
+    
+    func checkService() {
+
+    }
+    
     
     @objc func loginButtonTapped() {
         if loginField.hasText && passwordField.hasText {
@@ -68,7 +72,7 @@ class LoginViewController: UIViewController {
     func saveAction() {
         let keychain: Keychain
         if let service = loginField.text, !service.isEmpty {
-            keychain = Keychain(service: service)
+            keychain = Keychain(service: service, accessGroup: "User")
         } else {
             keychain = Keychain()
         }
