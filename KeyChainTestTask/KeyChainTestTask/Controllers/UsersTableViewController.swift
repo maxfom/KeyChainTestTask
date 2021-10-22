@@ -14,17 +14,19 @@ class UsersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "User Data"
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.968627451, alpha: 1)
         tableView.register(UsersTableViewCell.self, forCellReuseIdentifier: idUsersTableCell)
         tableView.separatorStyle = .none
     }
+    
+    
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        navigationController?.navigationBar.isHidden = false
         reloadData()
         tableView.reloadData()
     }
@@ -110,6 +112,7 @@ class UsersTableViewController: UITableViewController {
         }
     }
     #endif
+
 
     // MARK: reloadData
     

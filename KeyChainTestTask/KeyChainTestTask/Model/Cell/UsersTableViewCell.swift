@@ -31,6 +31,7 @@ class UsersTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -53,7 +54,7 @@ class UsersTableViewCell: UITableViewCell {
             backgroundViewCell.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
             backgroundViewCell.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             backgroundViewCell.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            backgroundViewCell.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -1)
+            backgroundViewCell.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
         ])
         
         self.addSubview(nameCellLabel)

@@ -9,13 +9,11 @@ import UIKit
 import KeychainAccess
 
 class LoginViewController: UIViewController {
-    
-    
-    
+        
     let loginLabel = UILabel(text: "Login:", font: .AvenirNext14(), aligment: .left)
-    lazy var loginField = UITextField(placeholder: "Enter your login", keyboardType: .default, font: .AvenirNextDemiBold14())
+    var loginField = UITextField(placeholder: "Enter your login", keyboardType: .default, font: .AvenirNextDemiBold14())
     let passwordLabel = UILabel(text: "Password:", font: .AvenirNext14(), aligment: .left)
-    lazy var passwordField = UITextField(placeholder: "Enter your password", keyboardType: .default, font: .AvenirNextDemiBold14())
+    var passwordField = UITextField(placeholder: "Enter your password", keyboardType: .default, font: .AvenirNextDemiBold14())
     
     
     let loginButton: UIButton = {
@@ -42,15 +40,9 @@ class LoginViewController: UIViewController {
         view.backgroundColor = .white
         title = "Log in"
         setConstraints()
-        checkService()
         passwordField.isSecureTextEntry = true
-        
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         showUsersButton.addTarget(self, action: #selector(showButtonTapped), for: .touchUpInside)
-    }
-    
-    func checkService() {
-
     }
     
     
@@ -72,13 +64,11 @@ class LoginViewController: UIViewController {
     func saveAction() {
         let keychain: Keychain
         if let service = loginField.text, !service.isEmpty {
-            keychain = Keychain(service: service, accessGroup: "User")
+            keychain = Keychain(service: service)
         } else {
             keychain = Keychain()
         }
         keychain[loginField.text!] = passwordField.text
-
-        dismiss(animated: true, completion: nil)
     }
     
     func pushControllers(vc: UIViewController) {
@@ -140,7 +130,6 @@ extension LoginViewController {
             showUsersButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
             showUsersButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
             showUsersButton.heightAnchor.constraint(equalToConstant: 22),
-            showUsersButton.widthAnchor.constraint(equalToConstant: 300)
         ])
         
     }
