@@ -104,3 +104,5 @@ Pods-KeyChainTestTask-Info.plist
 Pods-KeyChainTestTask-frameworks.sh
 Pods-KeyChainTestTask-acknowledgements.markdown
 Keychain.swift
+LICENSE
+Manifest.lock
