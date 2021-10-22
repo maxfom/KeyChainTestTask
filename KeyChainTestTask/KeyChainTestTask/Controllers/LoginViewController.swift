@@ -17,6 +17,9 @@ class LoginViewController: UIViewController {
     let passwordLabel = UILabel(text: "Password:", font: .AvenirNext14(), aligment: .left)
     lazy var passwordField = UITextField(placeholder: "Enter your password", keyboardType: .default, font: .AvenirNextDemiBold14())
     
+    @IBAction func unwindToMenu(segue: UIStoryboardSegue) {}
+
+    
     let loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Log in", for: .normal)
@@ -30,7 +33,7 @@ class LoginViewController: UIViewController {
     let showUsersButton: UIButton = {
         let button = UIButton()
         button.setTitle("Show Users Data", for: .normal)
-        button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont(name: "Avenir Next Demi Bold", size: 14)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -39,20 +42,26 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        title = "Log in"
         setConstraints()
         passwordField.isSecureTextEntry = true
-        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        showUsersButton.addTarget(self, action: #selector(showButtonTapped), for: .touchUpInside)
     }
     
     @objc func loginButtonTapped() {
         if loginField.hasText && passwordField.hasText {
             saveAction()
-            pushControllers(vc: UsersTableViewController())
+            pushControllers(vc: MainHeadViewController())
         }
         else {
             print("Input symbols")
         }
+    }
+    
+    @objc func showButtonTapped() {
+        pushControllers(vc: UsersTableViewController())
     }
     
     
@@ -70,7 +79,7 @@ class LoginViewController: UIViewController {
     
     func pushControllers(vc: UIViewController) {
         let viewController = vc
-        navigationController?.navigationBar.topItem?.title = "Users"
+        navigationController?.navigationBar.topItem?.title = ""
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
@@ -124,6 +133,8 @@ extension LoginViewController {
         view.addSubview(showUsersButton)
         NSLayoutConstraint.activate([
             showUsersButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
+            showUsersButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
+            showUsersButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
             showUsersButton.heightAnchor.constraint(equalToConstant: 22),
             showUsersButton.widthAnchor.constraint(equalToConstant: 300)
         ])

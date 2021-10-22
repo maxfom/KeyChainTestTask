@@ -88,3 +88,19 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+Podfile.lock
+contents.xcworkspacedata
+IDEWorkspaceChecks.plist
+KeyChainTestTask/Pods/Target Support Files/KeychainAccess
+KeyChainTestTask/Pods/Pods.xcodeproj
+Pods-KeyChainTestTask-acknowledgements.plist
+*.xcfilelist
+*.m
+Pods-KeyChainTestTask.release.xcconfig
+Pods-KeyChainTestTask.modulemap
+Pods-KeyChainTestTask.debug.xcconfig
+Pods-KeyChainTestTask-umbrella.h
+Pods-KeyChainTestTask-Info.plist
+Pods-KeyChainTestTask-frameworks.sh
+Pods-KeyChainTestTask-acknowledgements.markdown
+Keychain.swift
